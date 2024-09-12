@@ -1,6 +1,5 @@
 package contactBook;
 
-import contactBook.Contact;
 
 public class ContactBook {
     static final int DEFAULT_SIZE = 100;
@@ -18,6 +17,24 @@ public class ContactBook {
     //Pre: name != null
     public boolean hasContact(String name) {
         return searchIndex(name) >= 0;
+    }
+
+    /**
+     * Returns the name of the phone number.
+     *
+     * @param phoneNumber the phone number
+     * @return the name of the respective phone number, if this exists
+     *         otherwise returns null
+     * @author Daniel Vasconcelos, 65173
+     */
+    public String getNameByPhoneNumber(int phoneNumber) {
+        int i = 0;
+        while(i < getNumberOfContacts()) {
+            Contact c = contacts[i];
+            if(c.getPhone() == phoneNumber) return c.getName();
+            i++;
+        }
+        return null;
     }
 
     public int getNumberOfContacts() {

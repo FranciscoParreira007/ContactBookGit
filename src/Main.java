@@ -9,6 +9,7 @@ public class Main {
     public static final String ADD_CONTACT    = "AC";
     public static final String REMOVE_CONTACT = "RC";
     public static final String GET_PHONE      = "GP";
+    public static final String GET_NUMBER      = "GN";
     public static final String GET_EMAIL      = "GE";
     public static final String SET_PHONE      = "SP";
     public static final String SET_EMAIL      = "SE";
@@ -21,6 +22,7 @@ public class Main {
     public static final String CONTACT_ADDED = "contactBook.Contact added.";
     public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
+    public static final String NOT_EXISTENT_PHONE = "Phone number does not exist.";
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
@@ -40,6 +42,9 @@ public class Main {
                     break;
                 case GET_PHONE:
                     getPhone(in,cBook);
+                    break;
+                case GET_NUMBER:
+                    getPhoneNumber(in, cBook);
                     break;
                 case GET_EMAIL:
                     getEmail(in,cBook);
@@ -62,6 +67,13 @@ public class Main {
         System.out.println(QUIT_MSG);
         System.out.println();
         in.close();
+    }
+
+    private static void getPhoneNumber(Scanner in, ContactBook cBook) {
+        int phone = in.nextInt(); in.nextLine();
+        String name = cBook.getNameByPhoneNumber(phone);
+        if(name != null) System.out.println(name);
+        else System.out.println(NOT_EXISTENT_PHONE);
     }
 
     private static String getCommand(Scanner in) {

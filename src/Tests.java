@@ -1,3 +1,6 @@
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -8,8 +11,7 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.util.Locale;
 
-import org.junit.Before;
-import org.junit.Test;
+
 
 /**
  * A classe Tests especifica um conjunto de testes implementado recorrendo à ferramenta 
