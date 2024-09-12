@@ -1,3 +1,4 @@
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,7 +34,8 @@ public class Tests {
      * Basta configurar esta sequência de testes!
      */
     @Test public void test1() { test("1_in_base.txt","1_out_base.txt"); }
-    @Test public void test2() { test("2_in_base_GN.txt","2_out_base_GN.txt"); }
+    @Test
+    public void test2() { test("2_in_base_GN.txt","2_out_base_GN.txt"); }
     @Test public void test3() { test("3_in_base_EP.txt","3_out_base_EP.txt"); }
 
 

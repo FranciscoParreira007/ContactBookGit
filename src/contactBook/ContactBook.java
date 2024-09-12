@@ -24,14 +24,14 @@ public class ContactBook {
      *
      * @param phoneNumber the phone number
      * @return the name of the respective phone number, if this exists
-     *         otherwise returns null
+     * otherwise returns null
      * @author Daniel Vasconcelos, 65173
      */
     public String getNameByPhoneNumber(int phoneNumber) {
         int i = 0;
-        while(i < getNumberOfContacts()) {
+        while (i < getNumberOfContacts()) {
             Contact c = contacts[i];
-            if(c.getPhone() == phoneNumber) return c.getName();
+            if (c.getPhone() == phoneNumber) return c.getName();
             i++;
         }
         return null;
@@ -52,8 +52,8 @@ public class ContactBook {
     //Pre: name != null && hasContact(name)
     public void deleteContact(String name) {
         int index = searchIndex(name);
-        for(int i=index; i<counter; i++)
-            contacts[i] = contacts[i+1];
+        for (int i = index; i < counter; i++)
+            contacts[i] = contacts[i + 1];
         counter--;
     }
 
@@ -81,7 +81,7 @@ public class ContactBook {
         int i = 0;
         int result = -1;
         boolean found = false;
-        while (i<counter && !found)
+        while (i < counter && !found)
             if (contacts[i].getName().equals(name))
                 found = true;
             else
@@ -91,8 +91,8 @@ public class ContactBook {
     }
 
     private void resize() {
-        Contact tmp[] = new Contact[2*contacts.length];
-        for (int i=0;i<counter; i++)
+        Contact tmp[] = new Contact[2 * contacts.length];
+        for (int i = 0; i < counter; i++)
             tmp[i] = contacts[i];
         contacts = tmp;
     }
@@ -102,7 +102,7 @@ public class ContactBook {
     }
 
     public boolean hasNext() {
-        return (currentContact >= 0 ) && (currentContact < counter);
+        return (currentContact >= 0) && (currentContact < counter);
     }
 
     //Pre: hasNext()
@@ -110,4 +110,7 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
+    public ContactIterator iterator() {
+        return new ContactIterator(contacts, counter);
+    }
 }
