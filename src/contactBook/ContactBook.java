@@ -113,4 +113,16 @@ public class ContactBook {
     public ContactIterator iterator() {
         return new ContactIterator(contacts, counter);
     }
+
+    public boolean samePhones() {
+        boolean found = false;
+        for(int index = 0; index < counter; index++) {
+            for(int i = index + 1; i < counter && !found; i++){
+                if(contacts[index].getPhone() == contacts[i].getPhone()){
+                    found = true;
+                }
+            }
+        }
+        return found;
+    }
 }
